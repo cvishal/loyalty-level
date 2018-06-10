@@ -26,7 +26,7 @@ spec:
     spec:
       containers:
       - name: loyalty-level
-        image: loyalty-level:latest
+        image: mycluster.icp:8500/default/loyalty-level:latest
         env:
           - name: MQ_ID
             valueFrom:

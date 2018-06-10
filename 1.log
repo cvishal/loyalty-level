@@ -1,0 +1,165 @@
+Launching defaultServer (WebSphere Application Server 17.0.0.3/wlp-1.0.18.cl170320170927-1854) on IBM J9 VM, version 8.0.5.0 - pxa6480sr5-20170905_01(SR5) (en_US)
+[AUDIT   ] CWWKE0001I: The server defaultServer has been launched.
+[AUDIT   ] CWWKE0100I: This product is licensed for development, and limited production use. The full license terms can be viewed here: https://public.dhe.ibm.com/ibmdl/export/pub/software/websphere/wasdev/license/base_ilan/ilan/17.0.0.3/lafiles/en.html
+[AUDIT   ] CWWKG0093A: Processing configuration drop-ins resource: /opt/ibm/wlp/usr/servers/defaultServer/configDropins/defaults/keystore.xml
+[AUDIT   ] CWWKZ0058I: Monitoring dropins for applications. 
+[AUDIT   ] CWWKT0016I: Web application available (default_host): http://loyalty-level-2723615343-8wwm9:9080/loyalty-level/
+[AUDIT   ] CWWKZ0001I: Application LoyaltyLevel started in 0.640 seconds.
+[AUDIT   ] CWWKF0012I: The server installed the following features: [servlet-3.1, wmqJmsClient-2.0, jndi-1.0, jca-1.7, microProfile-1.0, json-1.0, jms-2.0, cdi-1.2, jsonp-1.0, jaxrs-2.0, jaxrsClient-2.0].
+[AUDIT   ] CWWKF0011I: The server defaultServer is ready to run a smarter planet.
+Getting the InitialContext
+Looking up our JMS resources
+Initialization completed successfully!
+[err] com.ibm.msg.client.jms.DetailedJMSException: MQJCA1011: Failed to allocate a JMS connection.
+An internal error caused an attempt to allocate a connection to fail.
+See the linked exception for details of the failure.
+[err] 	at com.ibm.mq.connector.services.JCAExceptionBuilder.buildException(JCAExceptionBuilder.java:184)
+[err] 	at com.ibm.mq.connector.services.JCAExceptionBuilder.buildException(JCAExceptionBuilder.java:135)
+[err] 	at com.ibm.mq.connector.outbound.ConnectionFactoryImpl.createManagedJMSConnection(ConnectionFactoryImpl.java:400)
+[err] 	at com.ibm.mq.connector.outbound.ConnectionFactoryImpl.createConnectionInternal(ConnectionFactoryImpl.java:250)
+[err] 	at com.ibm.mq.connector.outbound.QueueConnectionFactoryImpl.createQueueConnection(QueueConnectionFactoryImpl.java:187)
+[err] 	at com.ibm.mq.connector.outbound.QueueConnectionFactoryImpl.createQueueConnection(QueueConnectionFactoryImpl.java:167)
+[err] 	at com.ibm.hybrid.cloud.sample.portfolio.LoyaltyLevel.invokeJMS(LoyaltyLevel.java:119)
+[err] 	at com.ibm.hybrid.cloud.sample.portfolio.LoyaltyLevel.getLoyalty(LoyaltyLevel.java:85)
+[err] 	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+[err] 	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:90)
+[err] 	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:55)
+[err] 	at java.lang.reflect.Method.invoke(Method.java:508)
+[err] 	at com.ibm.ws.jaxrs20.server.LibertyJaxRsServerFactoryBean.performInvocation(LibertyJaxRsServerFactoryBean.java:631)
+[err] 	at [internal classes]
+[err] 	at javax.servlet.http.HttpServlet.service(HttpServlet.java:687)
+[err] 	at com.ibm.websphere.jaxrs.server.IBMRestServlet.service(IBMRestServlet.java:96)
+[err] 	at [internal classes]
+[err] 	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1160)
+[err] 	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:635)
+[err] 	at java.lang.Thread.run(Thread.java:795)
+[err] Caused by: 
+[err] com.ibm.msg.client.jms.DetailedJMSSecurityException: JMSWMQ2013: The security authentication was not valid that was supplied for QueueManager 'qm1' with connection mode 'Client' and host name 'mqrel1-ibm-mqadvanced-se(1414)'.
+Please check if the supplied username and password are correct on the QueueManager to which you are connecting.
+[err] 	at com.ibm.msg.client.wmq.common.internal.Reason.reasonToException(Reason.java:531)
+[err] 	at com.ibm.msg.client.wmq.common.internal.Reason.createException(Reason.java:215)
+[err] 	at com.ibm.msg.client.wmq.internal.WMQConnection.<init>(WMQConnection.java:422)
+[err] 	at com.ibm.msg.client.wmq.internal.WMQXAConnection.<init>(WMQXAConnection.java:67)
+[err] 	at com.ibm.msg.client.wmq.factories.WMQXAConnectionFactory.createV7ProviderConnection(WMQXAConnectionFactory.java:187)
+[err] 	at com.ibm.msg.client.wmq.factories.WMQConnectionFactory.createProviderConnection(WMQConnectionFactory.java:7814)
+[err] 	at com.ibm.msg.client.wmq.factories.WMQXAConnectionFactory.createProviderXAConnection(WMQXAConnectionFactory.java:98)
+[err] 	at com.ibm.msg.client.jms.admin.JmsConnectionFactoryImpl.createXAConnectionInternal(JmsConnectionFactoryImpl.java:350)
+[err] 	at com.ibm.mq.jms.MQXAQueueConnectionFactory.createXAQueueConnection(MQXAQueueConnectionFactory.java:168)
+[err] 	at com.ibm.mq.jms.MQXAQueueConnectionFactory.createXAConnection(MQXAQueueConnectionFactory.java:116)
+[err] 	at com.ibm.mq.connector.ConnectionBuilder.createConnection(ConnectionBuilder.java:134)
+[err] 	at com.ibm.mq.connector.outbound.ManagedQueueConnectionFactoryImpl.createConnection(ManagedQueueConnectionFactoryImpl.java:197)
+[err] 	at com.ibm.mq.connector.outbound.ManagedConnectionImpl.<init>(ManagedConnectionImpl.java:173)
+[err] 	at com.ibm.mq.connector.outbound.ManagedQueueConnectionImpl.<init>(ManagedQueueConnectionImpl.java:74)
+[err] 	at com.ibm.mq.connector.outbound.ManagedQueueConnectionFactoryImpl.createManagedConnection(ManagedQueueConnectionFactoryImpl.java:151)
+[err] 	at com.ibm.ejs.j2c.FreePool.createManagedConnectionWithMCWrapper(FreePool.java:1359)
+[err] 	at [internal classes]
+[err] 	at com.ibm.mq.connector.outbound.ConnectionFactoryImpl.createManagedJMSConnection(ConnectionFactoryImpl.java:307)
+[err] 	... 50 more
+[err] Caused by: 
+[err] com.ibm.mq.MQException: JMSCMQ0001: IBM MQ call failed with compcode '2' ('MQCC_FAILED') reason '2035' ('MQRC_NOT_AUTHORIZED').
+[err] 	at com.ibm.msg.client.wmq.common.internal.Reason.createException(Reason.java:203)
+[err] 	... 69 more
+Getting the InitialContext
+Looking up our JMS resources
+Initialization completed successfully!
+[err] com.ibm.msg.client.jms.DetailedJMSException: MQJCA1011: Failed to allocate a JMS connection.
+An internal error caused an attempt to allocate a connection to fail.
+See the linked exception for details of the failure.
+[err] 	at com.ibm.mq.connector.services.JCAExceptionBuilder.buildException(JCAExceptionBuilder.java:184)
+[err] 	at com.ibm.mq.connector.services.JCAExceptionBuilder.buildException(JCAExceptionBuilder.java:135)
+[err] 	at com.ibm.mq.connector.outbound.ConnectionFactoryImpl.createManagedJMSConnection(ConnectionFactoryImpl.java:400)
+[err] 	at com.ibm.mq.connector.outbound.ConnectionFactoryImpl.createConnectionInternal(ConnectionFactoryImpl.java:250)
+[err] 	at com.ibm.mq.connector.outbound.QueueConnectionFactoryImpl.createQueueConnection(QueueConnectionFactoryImpl.java:187)
+[err] 	at com.ibm.mq.connector.outbound.QueueConnectionFactoryImpl.createQueueConnection(QueueConnectionFactoryImpl.java:167)
+[err] 	at com.ibm.hybrid.cloud.sample.portfolio.LoyaltyLevel.invokeJMS(LoyaltyLevel.java:119)
+[err] 	at com.ibm.hybrid.cloud.sample.portfolio.LoyaltyLevel.getLoyalty(LoyaltyLevel.java:85)
+[err] 	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+[err] 	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:90)
+[err] 	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:55)
+[err] 	at java.lang.reflect.Method.invoke(Method.java:508)
+[err] 	at com.ibm.ws.jaxrs20.server.LibertyJaxRsServerFactoryBean.performInvocation(LibertyJaxRsServerFactoryBean.java:631)
+[err] 	at [internal classes]
+[err] 	at javax.servlet.http.HttpServlet.service(HttpServlet.java:687)
+[err] 	at com.ibm.websphere.jaxrs.server.IBMRestServlet.service(IBMRestServlet.java:96)
+[err] 	at [internal classes]
+[err] 	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1160)
+[err] 	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:635)
+[err] 	at java.lang.Thread.run(Thread.java:795)
+[err] Caused by: 
+[err] com.ibm.msg.client.jms.DetailedJMSSecurityException: JMSWMQ2013: The security authentication was not valid that was supplied for QueueManager 'qm1' with connection mode 'Client' and host name 'mqrel1-ibm-mqadvanced-se(1414)'.
+Please check if the supplied username and password are correct on the QueueManager to which you are connecting.
+[err] 	at com.ibm.msg.client.wmq.common.internal.Reason.reasonToException(Reason.java:531)
+[err] 	at com.ibm.msg.client.wmq.common.internal.Reason.createException(Reason.java:215)
+[err] 	at com.ibm.msg.client.wmq.internal.WMQConnection.<init>(WMQConnection.java:422)
+[err] 	at com.ibm.msg.client.wmq.internal.WMQXAConnection.<init>(WMQXAConnection.java:67)
+[err] 	at com.ibm.msg.client.wmq.factories.WMQXAConnectionFactory.createV7ProviderConnection(WMQXAConnectionFactory.java:187)
+[err] 	at com.ibm.msg.client.wmq.factories.WMQConnectionFactory.createProviderConnection(WMQConnectionFactory.java:7814)
+[err] 	at com.ibm.msg.client.wmq.factories.WMQXAConnectionFactory.createProviderXAConnection(WMQXAConnectionFactory.java:98)
+[err] 	at com.ibm.msg.client.jms.admin.JmsConnectionFactoryImpl.createXAConnectionInternal(JmsConnectionFactoryImpl.java:350)
+[err] 	at com.ibm.mq.jms.MQXAQueueConnectionFactory.createXAQueueConnection(MQXAQueueConnectionFactory.java:168)
+[err] 	at com.ibm.mq.jms.MQXAQueueConnectionFactory.createXAConnection(MQXAQueueConnectionFactory.java:116)
+[err] 	at com.ibm.mq.connector.ConnectionBuilder.createConnection(ConnectionBuilder.java:134)
+[err] 	at com.ibm.mq.connector.outbound.ManagedQueueConnectionFactoryImpl.createConnection(ManagedQueueConnectionFactoryImpl.java:197)
+[err] 	at com.ibm.mq.connector.outbound.ManagedConnectionImpl.<init>(ManagedConnectionImpl.java:173)
+[err] 	at com.ibm.mq.connector.outbound.ManagedQueueConnectionImpl.<init>(ManagedQueueConnectionImpl.java:74)
+[err] 	at com.ibm.mq.connector.outbound.ManagedQueueConnectionFactoryImpl.createManagedConnection(ManagedQueueConnectionFactoryImpl.java:151)
+[err] 	at com.ibm.ejs.j2c.FreePool.createManagedConnectionWithMCWrapper(FreePool.java:1359)
+[err] 	at [internal classes]
+[err] 	at com.ibm.mq.connector.outbound.ConnectionFactoryImpl.createManagedJMSConnection(ConnectionFactoryImpl.java:307)
+[err] 	... 50 more
+[err] Caused by: 
+[err] com.ibm.mq.MQException: JMSCMQ0001: IBM MQ call failed with compcode '2' ('MQCC_FAILED') reason '2035' ('MQRC_NOT_AUTHORIZED').
+[err] 	at com.ibm.msg.client.wmq.common.internal.Reason.createException(Reason.java:203)
+[err] 	... 69 more
+Getting the InitialContext
+Looking up our JMS resources
+Initialization completed successfully!
+[err] com.ibm.msg.client.jms.DetailedJMSException: MQJCA1011: Failed to allocate a JMS connection.
+An internal error caused an attempt to allocate a connection to fail.
+See the linked exception for details of the failure.
+[err] 	at com.ibm.mq.connector.services.JCAExceptionBuilder.buildException(JCAExceptionBuilder.java:184)
+[err] 	at com.ibm.mq.connector.services.JCAExceptionBuilder.buildException(JCAExceptionBuilder.java:135)
+[err] 	at com.ibm.mq.connector.outbound.ConnectionFactoryImpl.createManagedJMSConnection(ConnectionFactoryImpl.java:400)
+[err] 	at com.ibm.mq.connector.outbound.ConnectionFactoryImpl.createConnectionInternal(ConnectionFactoryImpl.java:250)
+[err] 	at com.ibm.mq.connector.outbound.QueueConnectionFactoryImpl.createQueueConnection(QueueConnectionFactoryImpl.java:187)
+[err] 	at com.ibm.mq.connector.outbound.QueueConnectionFactoryImpl.createQueueConnection(QueueConnectionFactoryImpl.java:167)
+[err] 	at com.ibm.hybrid.cloud.sample.portfolio.LoyaltyLevel.invokeJMS(LoyaltyLevel.java:119)
+[err] 	at com.ibm.hybrid.cloud.sample.portfolio.LoyaltyLevel.getLoyalty(LoyaltyLevel.java:85)
+[err] 	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+[err] 	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:90)
+[err] 	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:55)
+[err] 	at java.lang.reflect.Method.invoke(Method.java:508)
+[err] 	at com.ibm.ws.jaxrs20.server.LibertyJaxRsServerFactoryBean.performInvocation(LibertyJaxRsServerFactoryBean.java:631)
+[err] 	at [internal classes]
+[err] 	at javax.servlet.http.HttpServlet.service(HttpServlet.java:687)
+[err] 	at com.ibm.websphere.jaxrs.server.IBMRestServlet.service(IBMRestServlet.java:96)
+[err] 	at [internal classes]
+[err] 	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1160)
+[err] 	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:635)
+[err] 	at java.lang.Thread.run(Thread.java:795)
+[err] Caused by: 
+[err] com.ibm.msg.client.jms.DetailedJMSSecurityException: JMSWMQ2013: The security authentication was not valid that was supplied for QueueManager 'qm1' with connection mode 'Client' and host name 'mqrel1-ibm-mqadvanced-se(1414)'.
+Please check if the supplied username and password are correct on the QueueManager to which you are connecting.
+[err] 	at com.ibm.msg.client.wmq.common.internal.Reason.reasonToException(Reason.java:531)
+[err] 	at com.ibm.msg.client.wmq.common.internal.Reason.createException(Reason.java:215)
+[err] 	at com.ibm.msg.client.wmq.internal.WMQConnection.<init>(WMQConnection.java:422)
+[err] 	at com.ibm.msg.client.wmq.internal.WMQXAConnection.<init>(WMQXAConnection.java:67)
+[err] 	at com.ibm.msg.client.wmq.factories.WMQXAConnectionFactory.createV7ProviderConnection(WMQXAConnectionFactory.java:187)
+[err] 	at com.ibm.msg.client.wmq.factories.WMQConnectionFactory.createProviderConnection(WMQConnectionFactory.java:7814)
+[err] 	at com.ibm.msg.client.wmq.factories.WMQXAConnectionFactory.createProviderXAConnection(WMQXAConnectionFactory.java:98)
+[err] 	at com.ibm.msg.client.jms.admin.JmsConnectionFactoryImpl.createXAConnectionInternal(JmsConnectionFactoryImpl.java:350)
+[err] 	at com.ibm.mq.jms.MQXAQueueConnectionFactory.createXAQueueConnection(MQXAQueueConnectionFactory.java:168)
+[err] 	at com.ibm.mq.jms.MQXAQueueConnectionFactory.createXAConnection(MQXAQueueConnectionFactory.java:116)
+[err] 	at com.ibm.mq.connector.ConnectionBuilder.createConnection(ConnectionBuilder.java:134)
+[err] 	at com.ibm.mq.connector.outbound.ManagedQueueConnectionFactoryImpl.createConnection(ManagedQueueConnectionFactoryImpl.java:197)
+[err] 	at com.ibm.mq.connector.outbound.ManagedConnectionImpl.<init>(ManagedConnectionImpl.java:173)
+[err] 	at com.ibm.mq.connector.outbound.ManagedQueueConnectionImpl.<init>(ManagedQueueConnectionImpl.java:74)
+[err] 	at com.ibm.mq.connector.outbound.ManagedQueueConnectionFactoryImpl.createManagedConnection(ManagedQueueConnectionFactoryImpl.java:151)
+[err] 	at com.ibm.ejs.j2c.FreePool.createManagedConnectionWithMCWrapper(FreePool.java:1359)
+[err] 	at [internal classes]
+[err] 	at com.ibm.mq.connector.outbound.ConnectionFactoryImpl.createManagedJMSConnection(ConnectionFactoryImpl.java:307)
+[err] 	... 50 more
+[err] Caused by: 
+[err] com.ibm.mq.MQException: JMSCMQ0001: IBM MQ call failed with compcode '2' ('MQCC_FAILED') reason '2035' ('MQRC_NOT_AUTHORIZED').
+[err] 	at com.ibm.msg.client.wmq.common.internal.Reason.createException(Reason.java:203)
+[err] 	... 69 more
